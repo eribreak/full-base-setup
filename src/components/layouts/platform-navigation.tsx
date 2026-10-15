@@ -2,13 +2,18 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { LayoutDashboard, User, Settings, LogOut, Menu, X, Sun, Moon } from "lucide-react"
+import { LayoutDashboard, User, Settings, LogOut, Menu, Sun, Moon } from "lucide-react"
 import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from "@/components/ui/dropdown-menu"
-import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuLink } from "@/components/ui/navigation-menu"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu"
 import { cn } from "@/lib/utils"
 
 const navigation = [
@@ -74,13 +79,14 @@ export function PlatformNavigation() {
           </Button>
 
           <DropdownMenu>
-            <DropdownMenuTrigger>
-              <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-                <Avatar className="h-8 w-8">
-                  <AvatarImage src="" alt="User" />
-                  <AvatarFallback>U</AvatarFallback>
-                </Avatar>
-              </Button>
+            <DropdownMenuTrigger
+              render={
+                <Button variant="ghost" className="relative h-8 w-8 rounded-full" />
+              }
+            >
+              <Avatar className="h-8 w-8">
+                <AvatarFallback>U</AvatarFallback>
+              </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56">
               <div className="px-2 py-1">
@@ -88,31 +94,29 @@ export function PlatformNavigation() {
                 <p className="text-xs text-muted-foreground">user@example.com</p>
               </div>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                <Link href="/profile" className="flex items-center gap-2 w-full">
-                  <User className="h-4 w-4" />
-                  Profile
-                </Link>
+              <DropdownMenuItem render={<Link href="/profile" />}>
+                <User className="h-4 w-4" />
+                Profile
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link href="/settings" className="flex items-center gap-2 w-full">
-                  <Settings className="h-4 w-4" />
-                  Settings
-                </Link>
+              <DropdownMenuItem render={<Link href="/settings" />}>
+                <Settings className="h-4 w-4" />
+                Settings
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem className="text-destructive focus:text-destructive">
-                <LogOut className="h-4 w-4 mr-2" />
+              <DropdownMenuItem variant="destructive">
+                <LogOut className="h-4 w-4" />
                 Log out
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
 
           <Sheet>
-            <SheetTrigger>
-              <Button variant="ghost" size="icon" className="md:hidden">
-                <Menu className="h-5 w-5" />
-              </Button>
+            <SheetTrigger
+              render={
+                <Button variant="ghost" size="icon" className="md:hidden" />
+              }
+            >
+              <Menu className="h-5 w-5" />
             </SheetTrigger>
             <SheetContent side="right" className="w-64 p-0">
               <nav className="flex flex-col gap-2 p-4">
