@@ -1,31 +1,8 @@
 "use client"
 
-import { useToast } from "@/hooks/use-toast"
-import {
-  Toast,
-  ToastClose,
-  ToastDescription,
-  ToastProvider,
-  ToastTitle,
-} from "@/components/ui/toast"
+import { Toaster } from "@/components/ui/toast"
 
-export function Toaster() {
-  const { toasts } = useToast()
-
-  return (
-    <ToastProvider>
-      {toasts.map(function ({ id, title, description, action, ...props }) {
-        return (
-          <Toast key={id} {...props}>
-            <div className="grid gap-1">
-              {title && <ToastTitle>{title}</ToastTitle>}
-              {description && <ToastDescription>{description}</ToastDescription>}
-            </div>
-            {action}
-            <ToastClose />
-          </Toast>
-        )
-      })}
-    </ToastProvider>
-  )
-}
+// Re-export of the registry Toaster (src/components/ui/toast.tsx), which
+// renders its own toast list through the Base UI toast manager. Keeping this
+// module so src/app/layout.tsx can import "@/components/ui/toaster".
+export { Toaster }
