@@ -2,9 +2,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter }
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Separator } from "@/components/ui/separator"
-import { User, Mail, Lock, Camera } from "lucide-react"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Mail, Lock } from "lucide-react"
 
 export default function ProfilePage() {
   return (
@@ -21,7 +20,6 @@ export default function ProfilePage() {
         </CardHeader>
         <CardContent className="flex items-center gap-6">
           <Avatar className="h-24 w-24">
-            <AvatarImage src="" alt="User avatar" />
             <AvatarFallback className="text-2xl">U</AvatarFallback>
           </Avatar>
           <div>
